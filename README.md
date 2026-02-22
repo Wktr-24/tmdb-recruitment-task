@@ -26,17 +26,17 @@ A Laravel application that fetches movies, series and genres from the TMDB API, 
 
 ```bash
 cp .env.example .env
-# Edit .env and set TMDB_API_TOKEN
 ```
 
-3. Start the containers:
+Edit `.env` and set `TMDB_API_TOKEN`.
+
+3. Start the containers (first run installs dependencies, ~30s):
 
 ```bash
 docker compose up -d
-# or: docker-compose up -d / podman-compose up -d
 ```
 
-Wait for dependencies to install (first run only, ~30s). Check progress with `docker logs -f app`.
+Alternatively: `docker-compose up -d` or `podman-compose up -d`.
 
 4. Generate the application key (if not already generated):
 
@@ -61,7 +61,7 @@ The command dispatches a chain of three jobs to the queue:
 2. `FetchMoviesJob` - fetches 50 most popular movies (in PL, EN, DE)
 3. `FetchSeriesJob` - fetches 10 most popular series (in PL, EN, DE)
 
-Jobs are processed automatically by the `queue-worker` container. Monitor progress with `docker logs -f queue-worker`.
+Jobs are processed automatically by the `queue-worker` container.
 
 ## API Endpoints
 
