@@ -36,6 +36,8 @@ docker compose up -d
 # or: docker-compose up -d / podman-compose up -d
 ```
 
+Wait for dependencies to install (first run only, ~30s). Check progress with `docker logs -f app`.
+
 4. Generate the application key (if not already generated):
 
 ```bash

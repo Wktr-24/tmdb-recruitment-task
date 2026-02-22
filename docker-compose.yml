@@ -8,8 +8,10 @@ services:
     volumes:
       - .:/var/www:z
     depends_on:
-      - mysql
-      - redis
+      mysql:
+        condition: service_healthy
+      redis:
+        condition: service_started
     environment:
       - DB_HOST=mysql
       - REDIS_HOST=redis
@@ -43,6 +45,11 @@ services:
       - "3306:3306"
     volumes:
       - mysql_data:/var/lib/mysql
+    healthcheck:
+      test: ["CMD", "mysqladmin", "ping", "-h", "localhost"]
+      interval: 5s
+      timeout: 5s
+      retries: 10
     networks:
       - laravel
 
@@ -64,8 +71,10 @@ services:
     volumes:
       - .:/var/www:z
     depends_on:
-      - mysql
-      - redis
+      mysql:
+        condition: service_healthy
+      redis:
+        condition: service_started
     environment:
       - DB_HOST=mysql
       - REDIS_HOST=redis

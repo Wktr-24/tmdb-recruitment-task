@@ -30,7 +30,7 @@ class FetchTmdbDataCommand extends Command
             new FetchSeriesJob,
         ])->dispatch();
 
-        $this->info('Jobs dispatched successfully. Run queue:work to process them.');
+        $this->info('Jobs dispatched successfully. They will be processed by the queue worker.');
 
         return self::SUCCESS;
     }
