@@ -17,7 +17,7 @@ class FetchTmdbDataCommandTest extends TestCase
 
         $this->artisan('tmdb:fetch')
             ->expectsOutput('Dispatching TMDB fetch jobs...')
-            ->expectsOutput('Jobs dispatched successfully. Run queue:work to process them.')
+            ->expectsOutput('Jobs dispatched successfully. They will be processed by the queue worker.')
             ->assertSuccessful();
 
         Bus::assertChained([
