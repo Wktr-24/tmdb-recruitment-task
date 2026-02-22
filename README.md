@@ -32,8 +32,8 @@ cp .env.example .env
 3. Start the containers:
 
 ```bash
-docker-compose up -d
-# or: podman-compose up -d
+docker compose up -d
+# or: docker-compose up -d / podman-compose up -d
 ```
 
 4. Generate the application key (if not already generated):
